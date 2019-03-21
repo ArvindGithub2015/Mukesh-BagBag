@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item>
+        <layer-list>
+            <item>
+                <shape>
+                    <stroke
+                        android:width="1dip"
+                        android:color="@android:color/white" />
+                    <corners android:radius="3dp" />
+                    <solid android:color="@android:color/white"></solid>
+                    <padding
+                        android:bottom="3.0dip"
+                        android:left="3.0dip"
+                        android:right="0.0dip"
+                        android:top="3.0dip" />
+                </shape>
+            </item>
+            <item>
+                <bitmap
+                    android:gravity="center_vertical|right"
+                    android:src="@drawable/ic_drop_down" />
+            </item>
+        </layer-list>
+    </item>
+</layer-list>
+
+
+<!--
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item>
+
+        <layer-list>
+
+            <item>
+                <shape>
+                    <gradient android:angle="90" android:endColor="#ffffff" android:startColor="#ffffff" android:type="linear" />
+
+                    <stroke android:width="0.33dp" android:color="#0fb1fa" />
+
+                    <corners android:radius="5dp" />
+
+                    <padding android:bottom="5dp" android:left="5dp" android:right="5dp" android:top="5dp" />
+                </shape>
+            </item>
+
+            <item android:right="5dp">
+
+                <bitmap android:gravity="center_vertical|right" android:src="@drawable/ic_drop_down" />
+
+            </item>
+
+        </layer-list>
+
+    </item>
+
+</selector>-->

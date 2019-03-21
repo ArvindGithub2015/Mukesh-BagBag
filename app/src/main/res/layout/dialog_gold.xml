@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <zuzusoft.com.bagbag.helper.custom_views.CustomFontTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="45dp"
+                    android:text="@string/gold_dialog_title"
+                    android:textColor="@color/gold"
+                    android:textSize="13sp"
+                    android:textStyle="normal"
+                    app:fontName="Roboto_Bold" />
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:orientation="vertical">
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="80dp"
+                        android:layout_gravity="center_horizontal">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            xmlns:app="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/profileImage"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:contentDescription="@string/tags"
+                            android:layout_gravity="center_horizontal"
+                            android:src="@raw/image_girl"
+                            app:civ_border_width="2dp"
+                            app:civ_border_color="@color/gold"/>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:contentDescription="@string/tags"
+                            android:layout_marginTop="5dp"
+                            android:layout_gravity="bottom|center_horizontal"
+                            android:src="@drawable/crow_on"/>
+
+                    </FrameLayout>
+
+                    <zuzusoft.com.bagbag.helper.custom_views.CustomFontTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:layout_marginTop="15dp"
+                        android:textStyle="normal"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginRight="25dp"
+                        android:gravity="center"
+                        android:textColor="@color/album_title"
+                        app:fontName="Roboto_Regular"
+                        android:layout_gravity="center_horizontal"
+                        android:text="@string/gold_dialog_info"/>
+
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:contentDescription="@string/tags"
+                            android:layout_gravity="center_horizontal"
+                            android:src="@drawable/hand_pointer"/>
+
+                        <zuzusoft.com.bagbag.helper.custom_views.CustomFontTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="13sp"
+                            android:layout_marginTop="10dp"
+                            android:textStyle="normal"
+                            android:layout_marginLeft="25dp"
+                            android:layout_marginRight="25dp"
+                            android:gravity="center"
+                            android:textColor="@color/album_title"
+                            app:fontName="Roboto_Bold"
+                            android:layout_gravity="center_horizontal"
+                            android:text="@string/gold_dialog_step1_title"/>
+
+
+                        <zuzusoft.com.bagbag.helper.custom_views.CustomFontTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
+                            android:layout_marginTop="5dp"
+                            android:textStyle="normal"
+                            android:layout_marginLeft="25dp"
+                            android:layout_marginRight="25dp"
+                            android:gravity="center"
+                            android:textColor="@color/album_title"
+                            app:fontName="Roboto_Regular"
+                            android:layout_gravity="center_horizontal"
+                            android:text="@string/gold_dialog_step1"/>
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:contentDescription="@string/tags"
+                            android:layout_gravity="center_horizontal"
+                            android:src="@drawable/heart"/>
+
+                        <zuzusoft.com.bagbag.helper.custom_views.CustomFontTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="13sp"
+                            android:layout_marginTop="10dp"
+                            android:textStyle="normal"
+                            android:layout_marginLeft="25dp"
+                            android:layout_marginRight="25dp"
+                            android:gravity="center"
+                            android:textColor="@color/album_title"
+                            app:fontName="Roboto_Bold"
+                            android:layout_gravity="center_horizontal"
+                            android:text="@string/gold_dialog_step2_title"/>
+
+
+                        <zuzusoft.com.bagbag.helper.custom_views.CustomFontTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
+                            android:layout_marginTop="5dp"
+                            android:textStyle="normal"
+                            android:layout_marginLeft="25dp"
+                            android:layout_marginRight="25dp"
+                            android:gravity="center"
+                            android:textColor="@color/album_title"
+                            app:fontName="Roboto_Regular"
+                            android:layout_gravity="center_horizontal"
+                            android:text="@string/gold_dialog_step2"/>
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:contentDescription="@string/tags"
+                            android:layout_gravity="center_horizontal"
+                            android:src="@drawable/exchange_alt"/>
+
+                        <zuzusoft.com.bagbag.helper.custom_views.CustomFontTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="13sp"
+                            android:layout_marginTop="10dp"
+                            android:textStyle="normal"
+                            android:layout_marginLeft="25dp"
+                            android:layout_marginRight="25dp"
+                            android:gravity="center"
+                            android:textColor="@color/album_title"
+                            app:fontName="Roboto_Bold"
+                            android:layout_gravity="center_horizontal"
+                            android:text="@string/gold_dialog_step3_title"/>
+
+
+                        <zuzusoft.com.bagbag.helper.custom_views.CustomFontTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
+                            android:layout_marginTop="5dp"
+                            android:textStyle="normal"
+                            android:layout_marginLeft="25dp"
+                            android:layout_marginRight="25dp"
+                            android:gravity="center"
+                            android:textColor="@color/album_title"
+                            app:fontName="Roboto_Regular"
+                            android:layout_gravity="center_horizontal"
+                            android:text="@string/gold_dialog_step3"/>
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginBottom="15dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/btnGold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:background="@drawable/bg_gold_button_round"
+                            android:gravity="center"
+                            android:paddingBottom="10dp"
+                            android:paddingLeft="30dp"
+                            android:paddingRight="30dp"
+                            android:paddingTop="10dp"
+                            android:text="@string/gold_dialog_btn_text"
+                            android:textColor="@color/white"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="25dp"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                </ScrollView>
+
+
+            </LinearLayout>
+
+        <ImageView
+            android:id="@+id/btnClose"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:contentDescription="@string/tags"
+            android:layout_gravity="end"
+            android:layout_margin="5dp"
+            android:src="@drawable/close_gold" />
+
+
+    </FrameLayout>
+
+</LinearLayout>
+
+

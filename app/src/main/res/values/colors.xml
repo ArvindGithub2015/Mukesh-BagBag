@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#1C0648</color>
+    <color name="colorPrimaryDark">#1C0648</color>
+    <color name="colorAccent">#FFFFFF</color>
+    <color name="viewBg">#f1f5f8</color>
+    <color name="album_title">#4c4c4c</color>
+    <color name="white">#FFFFFF</color>
+    <color name="btn_green">#FF7B5A</color>
+
+    <color name="gold_black">#000000</color>
+    <color name="gold">#FABC00</color>
+    <color name="bg_screen">#EEEEEE</color>
+    <color name="bg_blue">#2A3855</color>
+    <color name="bg_blue_tran">#CC2A3855</color>
+
+    <color name="colorNavAccentUnselected">#4c4c4c</color>
+    <color name="colorNavAccentSelected">#9587BB</color>
+
+    <color name="violet_thin">#D4B8FB</color>
+    <color name="violet_light">#978ABC</color>
+    <color name="screen_background">#EBEDEB</color>
+    <color name="color_green">#14808d</color>
+    <color name="color_brown">#343838</color>
+    <color name="color_orange">#f38a32</color>
+    <color name="color_orange_dark">#aa6023</color>
+    <color name="color_blue">#1479b7</color>
+    <color name="divider_grey">#e4e4e5</color>
+    <color name="light_heading">#6F7276</color>
+
+    <array name="rect_color">
+        <item>@color/color_blue</item>
+        <item>@color/color_brown</item>
+        <item>@color/color_green</item>
+        <item>@color/divider_grey</item>
+        <item>@color/color_orange</item>
+    </array>
+
+    <array name="color_palet1">
+        <item>@color/black_de</item>
+        <item>@color/color1</item>
+        <item>@color/color3</item>
+        <item>@color/color4</item>
+        <item>@color/color5</item>
+        <item>@color/color7</item>
+        <item>@color/color9</item>
+        <item>@color/color10</item>
+        <item>@color/color11</item>
+        <item>@color/color12</item>
+        <item>@color/color13</item>
+        <item>@color/color14</item>
+        <item>@color/color15</item>
+        <item>@color/lite_blue</item>
+    </array>
+
+    <color name="black_de">#000000</color>
+    <color name="color1">#2062af</color>
+    <color name="color10">#8c47fb</color>
+    <color name="color11">#7312BD</color>
+    <color name="color12">#8F806D</color>
+    <color name="color13">#004241</color>
+    <color name="color14">#FF00AC</color>
+    <color name="color15">#004A49</color>
+    <color name="color2">#00FFE4</color>
+    <color name="color3">#BD3C00</color>
+    <color name="color4">#DD3E48</color>
+    <color name="color5">#6B007E</color>
+    <color name="color6">#5C88BE</color>
+    <color name="color7">#59BC10</color>
+    <color name="color8">#E87034</color>
+    <color name="color9">#f84c44</color>
+    <color name="lite_blue">#42a5f5</color>
+
+</resources>

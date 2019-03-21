@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "269519596117",
+    "firebase_url": "https://bagbagapp-b37da.firebaseio.com",
+    "project_id": "bagbagapp-b37da",
+    "storage_bucket": "bagbagapp-b37da.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:269519596117:android:8a34136ca7f4e2d7",
+        "android_client_info": {
+          "package_name": "zuzusoft.com.bagbag"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "269519596117-v8n7vu78acvoquvhgcd969msdl8dt8vc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "zuzusoft.com.bagbag",
+            "certificate_hash": "2ce0750bdae3132e494caf859d488b17fba31f12"
+          }
+        },
+        {
+          "client_id": "269519596117-74o7aiffov8bgp5p9cqp44da8n33otnh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_jSR25UCRuyQp85hYK5LnNA-6EwkWhjA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "269519596117-74o7aiffov8bgp5p9cqp44da8n33otnh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

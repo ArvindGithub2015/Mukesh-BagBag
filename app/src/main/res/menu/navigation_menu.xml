@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/navShareBagBag"
+        android:icon="@drawable/nav_share"
+        android:title="SHARE BAGBAG"/>
+    <item android:id="@+id/navHelpAssistance"
+        android:icon="@drawable/nav_assistance"
+        android:title="HELP AND ASSISTANCE"/>
+    <item android:id="@+id/navNotification"
+        android:icon="@drawable/nav_notification"
+        android:title="NOTIFICATIONS"
+        app:actionLayout="@layout/layout_switch"/>
+    <item android:id="@+id/navTos"
+        android:icon="@drawable/nav_terms"
+        android:title="TERMS OF SERVICE"/>
+    <item android:id="@+id/navPrivacy"
+        android:icon="@drawable/nav_privacy"
+        android:title="PRIVACY POLICY"/>
+    <item android:id="@+id/navLogout"
+        android:icon="@drawable/nav_signoff"
+        android:title="SIGN OFF"/>
+
+</menu>

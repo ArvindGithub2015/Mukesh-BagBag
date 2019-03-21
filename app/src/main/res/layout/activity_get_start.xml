@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/progressView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:contentDescription="@string/content_descreption_bg"
+        android:src="@raw/bg_social"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_blue_tran"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="60dp"
+        android:layout_gravity="bottom"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="190dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/app_name"
+            android:layout_gravity="center_horizontal"
+            android:src="@raw/bagbag_logo"/>
+
+        <zuzusoft.com.bagbag.helper.custom_views.CustomFontTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:textSize="26sp"
+            android:textStyle="normal"
+            app:fontName="Roboto_Bold"
+            android:textColor="@color/white"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/screen_get_start_heading"/>
+
+
+        <zuzusoft.com.bagbag.helper.custom_views.CustomFontTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textStyle="normal"
+            android:textColor="@color/white"
+            app:fontName="Roboto_Regular"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/screen_get_start_sub_heading"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="45dp"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/btnFaceBook"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/screen_get_start_login_fb"
+                android:paddingStart="20dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:paddingEnd="10dp"
+                android:gravity="start"
+                android:drawablePadding="20dp"
+                android:drawableStart="@raw/icon_fb"
+                android:textSize="15sp"
+                android:textStyle="normal"
+                android:layout_margin="10dp"
+                android:textColor="@color/white"
+                android:background="@drawable/bg_button_register"/>
+
+
+            <TextView
+                android:id="@+id/btnGoogle"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="@string/screen_get_start_login_google"
+                android:paddingStart="20dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:paddingEnd="10dp"
+
+                android:drawableStart="@raw/icon_google"
+                android:drawablePadding="20dp"
+                android:gravity="start"
+                android:textSize="15sp"
+                android:textStyle="normal"
+                android:layout_margin="10dp"
+                android:textColor="@color/white"
+                android:background="@drawable/bg_button_register"/>
+
+
+            <zuzusoft.com.bagbag.helper.custom_views.CustomFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:layout_marginTop="10dp"
+                android:textStyle="normal"
+                app:fontName="Roboto_Regular"
+                android:textColor="@color/white"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/screen_get_start_info1"/>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <zuzusoft.com.bagbag.helper.custom_views.CustomFontTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textSize="12sp"
+                    android:textStyle="normal"
+                    app:fontName="Roboto_Regular"
+                    android:textColor="@color/white"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/screen_get_start_tc"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+
+                    android:background="@color/white"/>
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <zuzusoft.com.bagbag.helper.custom_views.CustomFontTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:textSize="12sp"
+        android:textStyle="normal"
+        app:fontName="Roboto_Regular"
+        android:textColor="@color/white"
+        android:layout_gravity="center_horizontal|bottom"
+        android:text="@string/screen_get__start_info2"/>
+
+</FrameLayout>
+
+</android.support.v4.widget.SwipeRefreshLayout>

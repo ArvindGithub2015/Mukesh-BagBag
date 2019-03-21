@@ -1,0 +1,277 @@
+<resources>
+
+    <string name="app_name">BagBag</string>
+
+    <string name="Roboto_Bold">Poppins-Bold</string>
+    <string name="Roboto_Medium">Roboto-Medium</string>
+    <string name="Roboto_Light">Roboto-Light</string>
+    <string name="Roboto_Regular">Poppins-Regular</string>
+    <string name="Roboto_Thin">Roboto-Thin</string>
+    <string name="Roboto_Italic">Roboto-Italic</string>
+
+    <string name="crop_image_activity_title"></string>
+    <string name="crop_image_menu_rotate_left">Rotate counter clockwise</string>
+    <string name="crop_image_menu_rotate_right">Rotate</string>
+    <string name="crop_image_menu_crop">Crop</string>
+    <string name="crop_image_menu_flip">Flip</string>
+    <string name="crop_image_menu_flip_horizontally">Flip horizontally</string>
+    <string name="crop_image_menu_flip_vertically">Flip vertically</string>
+
+    <string name="pick_image_intent_chooser_title">Select source</string>
+    <string name="crop_image_activity_no_permissions">Cancelling, required permissions are not granted</string>
+
+    <string-array name="spinner1">
+
+        <item>Filter 1</item>
+        <item>Filter 2</item>
+        <item>Filter 3</item>
+        <item>Filter 4</item>
+
+    </string-array>
+
+    <string-array name="brands">
+
+        <item>Louis Vuitton</item>
+        <item>Bimba Y Lola</item>
+
+    </string-array>
+
+    <string-array name="km">
+
+        <item>10 Km</item>
+        <item>50 Km</item>
+        <item>150 Km</item>
+        <item>All World</item>
+
+    </string-array>
+
+
+    <string-array name="color">
+
+        <item>Yellow</item>
+        <item>Red</item>
+        <item>Blue</item>
+        <item>Black</item>
+        <item>White</item>
+        <item>Multicolour</item>
+        <item>Transparent</item>
+        <item>Gray</item>
+        <item>Pink</item>
+        <item>Purple</item>
+        <item>Orange</item>
+        <item>Brown</item>
+        <item>Green</item>
+        <item>Silver</item>
+        <item>Golden</item>
+        <item>Bronze</item>
+        <item>Beige</item>
+        <item>Another color</item>
+
+    </string-array>
+
+
+    <string-array name="bagColor">
+
+        <item>All Colors</item>
+        <item>Yellow</item>
+        <item>Red</item>
+        <item>Blue</item>
+        <item>Black</item>
+        <item>White</item>
+        <item>Multicolour</item>
+        <item>Transparent</item>
+        <item>Gray</item>
+        <item>Pink</item>
+        <item>Purple</item>
+        <item>Orange</item>
+        <item>Brown</item>
+        <item>Green</item>
+        <item>Silver</item>
+        <item>Golden</item>
+        <item>Bronze</item>
+        <item>Beige</item>
+        <item>Another color</item>
+
+    </string-array>
+
+
+    <string-array name="textura">
+
+        <item>Textura</item>
+        <item>Filter 1</item>
+        <item>Filter 2</item>
+        <item>Filter 3</item>
+        <item>Filter 4</item>
+
+    </string-array>
+
+
+    <string-array name="tipo">
+
+        <item>Party Bag</item>
+        <item>Shoulder Bag</item>
+        <item>Hand Bag</item>
+        <item>Short Handle Bag</item>
+        <item>Sports Bag</item>
+        <item>Travel Bag</item>
+        <item>Beach Bag</item>
+        <item>Crossing Bag</item>
+        <item>Fanny Bag</item>
+        <item>Wallet</item>
+        <item>BackPack</item>
+        <item>Another Type</item>
+
+    </string-array>
+
+    <string-array name="bagType">
+
+        <item>All Types</item>
+        <item>Another Type</item>
+        <item>BackPack</item>
+        <item>Beach Bag</item>
+        <item>Crossing Bag</item>
+        <item>Fanny Bag</item>
+        <item>Hand Bag</item>
+        <item>Party Bag</item>
+        <item>Short Handle Bag</item>
+        <item>Sports Bag</item>
+        <item>Shoulder Bag</item>
+        <item>Travel Bag</item>
+        <item>Wallet</item>
+
+    </string-array>
+
+    <string-array name="tamano">
+
+        <item>XXL</item>
+        <item>Big</item>
+        <item>Medium</item>
+        <item>Small</item>
+        <item>Mini</item>
+
+    </string-array>
+
+    <string-array name="texture">
+
+        <item>Leather</item>
+        <item>Metal</item>
+        <item>Wood</item>
+        <item>Polyester</item>
+        <item>Fabric</item>
+        <item>Plastic</item>
+        <item>Wicker</item>
+        <item>Natural Hair</item>
+        <item>Synthetic Hair</item>
+        <item>Another Material</item>
+
+    </string-array>
+
+
+    <array name="query">
+        <item>Feedback</item>
+        <item>How to use</item>
+    </array>
+
+
+
+    <string name="facebook_app_id">264695097554906</string>
+    <string name="fb_login_protocol_scheme">fb264695097554906</string>
+    <string name="msg_subscribed">Suscribed Success</string>
+    <string name="msg_subscribe_failed">Suscribed Failed</string>
+
+
+    <!-- Get Start -->
+    <string name="screen_get_start_heading">To Bolso por el mio</string>
+    <string name="screen_get_start_sub_heading">La primera app de intercambio de Bolsos</string>
+    <string name="screen_get_start_login_fb">Iniciar sesion con Facebook</string>
+    <string name="screen_get_start_login_google">Iniciar sesion con Google</string>
+    <string name="screen_get_start_info1">Al pulsar “iniciar sesion”, aceptas nuestros</string>
+    <string name="screen_get_start_tc">Términos de servicio yPilitica de privacdad</string>
+    <string name="screen_get__start_info2">No publicamos nada de Facebook</string>
+    <string name="content_descreption_bg">Background Image</string>
+
+    <!-- Add Bag -->
+    <string name="screen_add_bag_text_toolbar">Subir nuevo Bolso</string>
+    <string name="screen_add_bag_title">Introduce las características del Bolso</string>
+    <string name="screen_add_bag_hint_brand_name">Marca (required)</string>
+    <string name="screen_add_bag_hint_bag_descp">Description, breve a larga (optional)</string>
+    <string name="screen_add_bag_btn_text">Anadir Fotos</string>
+    <string name="brandName">Louis Vuitton</string>
+    <string name="btn_text_exchange_bag">Te lo cambio</string>
+    <string name="bag_owner_name">Bag Owner Name</string>
+    <string name="text_distance_in_kms">a 1km distance</string>
+    <string name="screen_bag_details_info1">Compelling dsintermediate visionary solutions whereas</string>
+    <string name="text_mochila">Mochila</string>
+    <string name="tags">tags</string>
+    <string name="text_mediano">Mediano</string>
+    <string name="text_negro">Negro</string>
+    <string name="text_piel">Piel</string>
+    <string name="text_edit">Editar</string>
+    <string name="text_cambiar">Cambiar</string>
+    <string name="text_eliminar">Eliminar</string>
+    <string name="screen_bag_selection_title">Selecciona tus Bolsos para cambiar</string>
+    <string name="text_username">Patricia</string>
+    <string name="text_clear_selection">Eliminar Selection</string>
+    <string name="text_submit">Enviar</string>
+    <string name="text_counter">0</string>
+    <string name="text_change">Cambiar</string>
+    <string name="text_chat">CHAT</string>
+    <string name="text_hint_input_message">Tap here to write</string>
+    <string name="text_save_photo">GUARDAR FOTO</string>
+    <string name="screen_crop_title">La primera app de intercambio de Bolsos</string>
+    <string name="text_center_and_crop">Centra y Recorta la imagen</string>
+    <string name="text_NO">NO</string>
+    <string name="text_Si">Si</string>
+    <string name="text_chat_dialog_title">Compellingly provide access to quality?</string>
+    <string name="gold_dialog_title">Pasate a BagBag Gold desde solo 19$/mes</string>
+    <string name="gold_dialog_btn_text">VER BOLSOS</string>
+    <string name="gold_dialog_step3">Cambialo por otro con un solo click. Nosotros te lo enviamos. Así de fácil !</string>
+    <string name="gold_dialog_step3_title">3- LO CAMBIAS POR OTRO CUANDO QUIERAS</string>
+    <string name="gold_dialog_step2">Podrás disfrutar de cada Bolso el tiempo que desees. Tu decides hasta cuando!</string>
+    <string name="gold_dialog_step2_title">2- DISFRUTALO</string>
+    <string name="gold_dialog_step1_title">1- ESCOGE TU BOLSO</string>
+    <string name="gold_dialog_step1">Es muy sencillo, tan solo elige un Bolso que te guste de entre mas de 10.000 que tenemos en nuestro armario exclusivo.</string>
+    <string name="gold_dialog_info">y prueba mas de 10,000 Bolsos de las mejores Firmas.</string>
+    <string name="text_its_match">It\'s a match</string>
+    <string name="text_congratulations">Felicidades! Ya puedes hacer el combio de Bag</string>
+    <string name="text_send_month">ENVIAR UN MENSALE</string>
+    <string name="text_follow">SEGUIR DESUZANDO</string>
+    <string name="text_mensajes">Mensajes</string>
+    <string name="text_new_message">Nuevose Matches</string>
+    <string name="text_add_bag">Subir Bolso</string>
+    <string name="text_handbag_count"> bolsos</string>
+    <string name="text_hashtag_username">#marialopze</string>
+    <string name="text_change_it">Te Lo Cambio</string>
+    <string name="gold_ad_info">La primera app de intercambio de Bolsos 19\\u20AC/mes</string>
+    <string name="text_gold_title">BagBag Premimum</string>
+    <string name="text_see_bag">Ver Bolso</string>
+    <string name="text_want_it">Lo Quiero</string>
+    <string name="text_accept_change">Acepto Cambio</string>
+    <string name="my_closet_empty">My Closet Empty</string>
+    <string name="add_bag_text">Add bags by clicking Uplaod Bag button</string>
+    <string name="btn_update_bag_details">Update Bag Details</string>
+    <string name="search_empty">No Bags In Your Area</string>
+    <string name="filter_hint_text">Apply filters to sort your bag listing around you.</string>
+    <string name="petitions_empty">You have no petitions</string>
+    <string name="petition_hint_text">All petitions request will appere here.</string>
+    <string name="text_check_now">Check Now</string>
+    <string name="text_dismiss">Dismiss</string>
+    <string name="text_new_matches_empty">All new matches apper hear</string>
+    <string name="my_chat_empty">My Chat Empty</string>
+    <string name="text_chat_empty">All your chat history will list here.</string>
+    <string name="text_chat_time">4m</string>
+    <string name="text_chat_message">OK, I have no idea what Google did there since the code is very un-readable, so I made my own class</string>
+    <string name="text_chat_count">3</string>
+    <string name="empty_chat_window">Say Hi to Your Friend</string>
+    <string name="empty_chat_window_text">Your messages are end to end encrypted</string>
+    <string name="text_see_catalog">Ver Catálogo</string>
+    <string name="gold_list_empty">No Premium Bags Found</string>
+    <string name="gold_hint_text">All the premimum bags will list gown here. You can try different brand by slecting above dropdown.</string>
+    <string name="textSubmit_query">Write Your Query</string>
+    <string name="text_message_box_hint">Please enter your message here.</string>
+
+    <!-- Bag Details -->
+
+
+
+</resources>

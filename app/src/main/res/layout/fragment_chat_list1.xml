@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_screen"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/swipeRefresh"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <ListView
+                android:id="@+id/chatList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="visible"
+                android:divider="@null">
+            </ListView>
+
+            </android.support.v4.widget.SwipeRefreshLayout>
+
+            <!--<LinearLayout
+                android:id="@+id/emptyViewChat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:layout_marginTop="55dp"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <zuzusoft.com.bagbag.helper.custom_views.CustomFontTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/my_chat_empty"
+                    android:textColor="@color/colorNavAccentSelected"
+                    android:textSize="20sp"
+                    android:textStyle="normal"
+                    app:fontName="Roboto_Bold" />
+
+                <zuzusoft.com.bagbag.helper.custom_views.CustomFontTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/text_chat_empty"
+                    android:textColor="@color/violet_thin"
+                    android:textSize="13sp"
+                    android:textStyle="normal"
+                    app:fontName="Roboto_Regular" />
+
+            </LinearLayout>-->
+
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
+
