@@ -73,7 +73,7 @@ public class MknXmppService extends JobService {
 
             Log.d(TAG, "connected: Ok");
 
-            xmppConnection = xmppConnection;
+            xmppConnection = connection;
         }
 
         @Override

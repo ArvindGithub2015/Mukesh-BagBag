@@ -210,11 +210,13 @@ public class ChatWindowActivity extends BaseActivity implements BagExchangeDialo
 
                     scrollMyListViewToBottom();
 
-                    inputMessage.setText("");
-
                     if (MknXmppService.xmppConnection != null) {
                         MknXmppHelper.sendGroupMessage(MknXmppService.xmppConnection, chatData.getChatId(), inputMessage.getText().toString());
                     }
+
+                    inputMessage.setText("");
+
+
 
 
                 } else {

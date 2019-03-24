@@ -197,7 +197,7 @@ public class MknXmppHelper {
         try {
 
 //            Message msg = new Message(chatId+"chat21@conference.localhost.localdomain",Message.Type.groupchat);
-            Message msg = new Message(chatId+"@conference.localhost.localdomain",Message.Type.groupchat);
+            Message msg = new Message("chat"+chatId+"@conference.localhost.localdomain",Message.Type.groupchat);
 //            msg.setBody("This is nagarjuna friednds. Please join this room and let us have fun.");
             msg.setBody(message);
             xmppConnection.sendPacket(msg);
