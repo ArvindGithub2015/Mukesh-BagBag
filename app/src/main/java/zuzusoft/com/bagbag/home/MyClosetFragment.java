@@ -5,9 +5,6 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -26,10 +23,6 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
@@ -37,30 +30,23 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
-import javax.net.ssl.HttpsURLConnection;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
-import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import zuzusoft.com.bagbag.BagBagApplication;
 import zuzusoft.com.bagbag.R;
-import zuzusoft.com.bagbag.chat.ChatListAdapter;
 import zuzusoft.com.bagbag.closet.AddBagActivity;
-import zuzusoft.com.bagbag.custom_views.my_listview.MyListView;
-import zuzusoft.com.bagbag.get_start.model.Member;
-import zuzusoft.com.bagbag.get_start.model.RegisterResponse;
 import zuzusoft.com.bagbag.helper.DialogHelper;
-import zuzusoft.com.bagbag.helper.MknHelper;
 import zuzusoft.com.bagbag.helper.MknUtils;
 import zuzusoft.com.bagbag.helper.SessionManager;
 import zuzusoft.com.bagbag.helper.custom_views.CustomFontTextView;
 import zuzusoft.com.bagbag.home.adapters.MyClosetAdapter;
-import zuzusoft.com.bagbag.home.models.DataBags;
 import zuzusoft.com.bagbag.home.models.my_closet.Bag;
 import zuzusoft.com.bagbag.home.models.my_closet.MyClosetResponse;
+import zuzusoft.com.bagbag.localDB.ChatModel;
 import zuzusoft.com.bagbag.rest.ApiClient;
 import zuzusoft.com.bagbag.rest.ApiInterface;
 
@@ -161,6 +147,69 @@ public class MyClosetFragment extends Fragment {
 
         printHashKey(getContext());
 
+        // Local Storage test
+        insertNewMovieData();
+
+
+    }
+
+    private void insertNewMovieData() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                int totalItem = BagBagApplication.getInstance(getContext()).getDaoAccess().getNoOfChat();
+                totalItem++;
+                ChatModel movie = new ChatModel();
+                movie.setChatId("" + totalItem);
+                movie.setMessage("Message" + totalItem);
+                BagBagApplication.getInstance(getContext()).getDaoAccess().
+                        insertOnlySingleChat(movie);
+
+                int totalItemNew = BagBagApplication.getInstance(getContext()).getDaoAccess().getNoOfChat();
+
+                final List<ChatModel> movies = new ArrayList<>();
+
+                if (totalItemNew > 0) {
+                    movies.addAll(BagBagApplication.getInstance(getContext()).getDaoAccess().
+                            getAllChatList());
+
+
+                    Log.d(TAG, movies.toString());
+                } else {
+                    Log.d(TAG, "No CHat found");
+
+                }
+
+
+//                getChatList();
+
+            }
+        }).start();
+
+    }
+
+    private void getChatList() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                int totalItem = BagBagApplication.getInstance(getContext()).getDaoAccess().getNoOfChat();
+
+                final List<ChatModel> movies = new ArrayList<>();
+
+                if (totalItem > 0) {
+                    movies.addAll(BagBagApplication.getInstance(getContext()).getDaoAccess().
+                            getAllChatList());
+
+
+                    Log.d(TAG, movies.toString());
+                } else {
+                    Log.d(TAG, "No CHat found");
+
+                }
+
+            }
+        });
     }
 
     @Override

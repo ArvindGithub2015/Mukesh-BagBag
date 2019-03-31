@@ -184,7 +184,6 @@ public class ChatWindowActivity extends BaseActivity implements BagExchangeDialo
 
         }
 
-
     }
 
 
@@ -234,7 +233,8 @@ public class ChatWindowActivity extends BaseActivity implements BagExchangeDialo
                     scrollMyListViewToBottom();
 
                     if (MknXmppService.xmppConnection != null) {
-                        MknXmppHelper.sendGroupMessage(MknXmppService.xmppConnection, chatData.getChatId(), inputMessage.getText().toString());
+                        MknXmppHelper.sendGroupMessage(MknXmppService.xmppConnection,
+                                chatData.getChatId(), inputMessage.getText().toString());
                     }
 
                     inputMessage.setText("");
