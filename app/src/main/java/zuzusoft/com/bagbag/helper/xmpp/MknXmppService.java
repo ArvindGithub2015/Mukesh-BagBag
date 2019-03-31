@@ -81,6 +81,8 @@ public class MknXmppService extends JobService {
             super.authenticated(connection, resumed);
             Log.d(TAG, "authenticated: Ok");
 
+
+
             //set message listener
             ChatManager chatManager = ChatManager.getInstanceFor(connection);
             chatManager.addChatListener(new ChatManagerListener() {
