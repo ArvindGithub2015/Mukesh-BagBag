@@ -24,7 +24,8 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class ApiClient {
 
-    public static final String BASE_URL = "https://bagbag.app/admin/bagbag/";
+    //https://bagbag.app/bagbag_api/bagbag/
+    public static final String BASE_URL = "https://bagbag.app/bagbag_api/bagbag/";
 
     public static final String BASE_URL_TEST = "https://bagbag.app/mkn/";
 

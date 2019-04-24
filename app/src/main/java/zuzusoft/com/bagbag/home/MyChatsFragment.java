@@ -14,13 +14,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import org.jivesoftware.smack.chat.Chat;
-
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -40,7 +36,6 @@ import zuzusoft.com.bagbag.home.models.chat.ChatList;
 import zuzusoft.com.bagbag.home.models.chat.ChatListResponse;
 import zuzusoft.com.bagbag.home.models.chat.DataChatWindow;
 import zuzusoft.com.bagbag.home.models.chat.NewMatch;
-import zuzusoft.com.bagbag.home.models.chat.RosterBag;
 import zuzusoft.com.bagbag.rest.ApiClient;
 import zuzusoft.com.bagbag.rest.ApiInterface;
 

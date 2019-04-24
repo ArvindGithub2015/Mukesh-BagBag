@@ -73,14 +73,13 @@ public class MknXmppService extends JobService {
 
             Log.d(TAG, "connected: Ok");
 
-            xmppConnection = xmppConnection;
+            xmppConnection = connection;
         }
 
         @Override
         public void authenticated(XMPPConnection connection, boolean resumed) {
             super.authenticated(connection, resumed);
             Log.d(TAG, "authenticated: Ok");
-
 
 
             //set message listener

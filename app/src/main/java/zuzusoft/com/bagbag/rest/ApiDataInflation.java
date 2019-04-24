@@ -187,6 +187,8 @@ public class ApiDataInflation {
                         userData.put(SessionManager.KEY_GENDER, member.getGender());
                         userData.put(SessionManager.KEY_LAT_LAN, member.getLatlan());
 
+                        Log.v("User Session", userData.toString());
+
                         sessionManager.createLoginSession(userData);
 
                         if(mListener != null){
@@ -195,6 +197,8 @@ public class ApiDataInflation {
                         }
 
                     } else {
+
+                        Log.v("User Session", "Null");
 
                         if(mListener != null){
 
@@ -307,7 +311,7 @@ public class ApiDataInflation {
 
                     if (response.body().getStatus()) {
 
-                        Log.v("Name", response.body().getMessage());
+                        //Log.v("Name", response.body().getMessage());
 
                         if(mListener != null){
 
@@ -489,7 +493,7 @@ public class ApiDataInflation {
 
                     if (response.body().getStatus()) {
 
-                        Log.v("Name", response.body().getMessage());
+                       // Log.v("Name", response.body().getMessage());
 
                         if(mListener != null){
 
@@ -742,7 +746,7 @@ public class ApiDataInflation {
 
                     if (response.body().getStatus()) {
 
-                        Log.v("Name", response.body().getMessage());
+                       // Log.v("Name", response.body().getMessage());
 
                         if(mListener != null){
 
@@ -835,7 +839,7 @@ public class ApiDataInflation {
 
                     if (response.body().getStatus()) {
 
-                        Log.v("Name", response.body().getMessage());
+                        //Log.v("Name", response.body().getMessage());
                         if(pListener != null){
 
                             pListener.onPetitionAccept(true, dataBag);
@@ -925,7 +929,7 @@ public class ApiDataInflation {
 
                     if (response.body().getStatus()) {
 
-                        Log.v("Name", response.body().getMessage());
+                        //Log.v("Name", response.body().getMessage());
 
                         if(mListener != null){
 
@@ -1016,7 +1020,7 @@ public class ApiDataInflation {
 
                     if (response.body().getStatus()) {
 
-                        Log.v("Name", response.body().getMessage());
+                        //Log.v("Name", response.body().getMessage());
 
                         if(mListener != null){
 
@@ -1105,7 +1109,7 @@ public class ApiDataInflation {
 
                     if (response.body().getStatus()) {
 
-                        Log.v("Name", response.body().getMessage());
+                        //Log.v("Name", response.body().getMessage());
 
                         if(mListener != null){
 
@@ -1191,7 +1195,7 @@ public class ApiDataInflation {
                 int code = response.code();
                 if (code == 200) {
 
-                    Log.v("Name", response.body().getMessage());
+                   // Log.v("Name", response.body().getMessage());
                     if (response.body().getStatus()) {
 
 
@@ -1279,7 +1283,7 @@ public class ApiDataInflation {
 
                     if (response.body().getStatus()) {
 
-                        Log.v("Name", response.body().getMessage());
+                      //  Log.v("Name", response.body().getMessage());
                         if(pListener != null){
 
                             pListener.onFetchBrand(response.body().getBrands());

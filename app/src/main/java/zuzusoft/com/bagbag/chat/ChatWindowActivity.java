@@ -16,6 +16,8 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
+import org.jivesoftware.smack.MessageListener;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,15 +26,11 @@ import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 import zuzusoft.com.bagbag.R;
 import zuzusoft.com.bagbag.chat.model.Message;
-import zuzusoft.com.bagbag.closet.BagSelectionActivity;
-import zuzusoft.com.bagbag.closet.BagSelectionPetitonChangeActivity;
 import zuzusoft.com.bagbag.helper.BaseActivity;
 import zuzusoft.com.bagbag.helper.DialogHelper;
-import zuzusoft.com.bagbag.helper.MknHelper;
 import zuzusoft.com.bagbag.helper.xmpp.MknXmppConstants;
 import zuzusoft.com.bagbag.helper.xmpp.MknXmppHelper;
 import zuzusoft.com.bagbag.helper.xmpp.MknXmppService;
-import zuzusoft.com.bagbag.home.adapters.MyClosetAdapter;
 import zuzusoft.com.bagbag.home.models.chat.DataChatWindow;
 
 /**
@@ -41,7 +39,11 @@ import zuzusoft.com.bagbag.home.models.chat.DataChatWindow;
 
 public class ChatWindowActivity extends BaseActivity implements BagExchangeDialog.OnBagListener {
 
+
     public static final String KEY_BUNDLE_CHAT = "chat_bundle";
+
+    private static final String TAG = ChatWindowActivity.class.getSimpleName();
+
     @BindView(R.id.btnSend)
     ImageView btnSend;
     @BindView(R.id.inputMessage)
@@ -104,6 +106,27 @@ public class ChatWindowActivity extends BaseActivity implements BagExchangeDialo
 
         updateViews();
 
+
+        if (MknXmppService.xmppConnection != null) {
+            MknXmppHelper.joinChatRoom(MknXmppService.xmppConnection, chatData.getChatId(),
+                    chatData.getRosterBag().getUserName(),
+                    new MessageListener() {
+                        @Override
+                        public void processMessage(final org.jivesoftware.smack.packet.Message message) {
+
+                            Log.d(TAG, "Received Message : " + message);
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(context, message.getBody(), Toast.LENGTH_SHORT).show();
+                                }
+                            });
+
+                        }
+                    });
+        }
+
+
     }
 
     private void updateViews() {
@@ -161,7 +184,6 @@ public class ChatWindowActivity extends BaseActivity implements BagExchangeDialo
 
         }
 
-
     }
 
 
@@ -210,11 +232,12 @@ public class ChatWindowActivity extends BaseActivity implements BagExchangeDialo
 
                     scrollMyListViewToBottom();
 
-                    inputMessage.setText("");
-
                     if (MknXmppService.xmppConnection != null) {
-                        MknXmppHelper.sendGroupMessage(MknXmppService.xmppConnection, chatData.getChatId(), inputMessage.getText().toString());
+                        MknXmppHelper.sendGroupMessage(MknXmppService.xmppConnection,
+                                chatData.getChatId(), inputMessage.getText().toString());
                     }
+
+                    inputMessage.setText("");
 
 
                 } else {

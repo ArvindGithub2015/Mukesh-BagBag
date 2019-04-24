@@ -425,7 +425,7 @@ public class SearchBagsFragment extends Fragment {
 
                         if(!dataSet.isEmpty()){
 
-                            bagList.setAdapter(new SearchBagsAdapter(getActivity(), getGoldenBags(dataSet, adList), mListener));
+                            bagList.setAdapter(new SearchBagsAdapter(getContext(), getGoldenBags(dataSet, adList), mListener));
                             checkViewEmpty(3);
 
                         }else{

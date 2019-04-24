@@ -20,7 +20,7 @@ public class MknUtils {
     public static final String URL_BLOG_IMAGE = "http://zuzusoft.co.in/zuzusoft.co.in/hope/img/blogimage/";
     public static final String URL_PRODUCT_IMAGE = "http://zuzusoft.co.in/zuzusoft.co.in/hope/img/productimage/";
     public static final String URL_PROFILE_IMAGE = "http://zuzusoft.co.in/zuzusoft.co.in/hope/img/photo/";
-    public static final String URL_BAG_IMAGE = "https://bagbag.app/admin/bagbag/img/bag/";
+    public static final String URL_BAG_IMAGE = "https://bagbag.app/bagbag_api/bagbag/img/bag/";
 
     public static final String KEY_READ_BG = "quote_of_the_day";
 

@@ -50,12 +50,11 @@ import zuzusoft.com.bagbag.helper.SessionManager;
 
 public class MknXmppHelper {
 
+    private static final String TAG = "MknXmppHelper";
     private SessionManager sessionManager;
 
-    private static final String TAG = "MknXmppHelper";
-
     //Constructor
-    public MknXmppHelper(Context context, AbstractConnectionListener connectionListener){
+    public MknXmppHelper(Context context, AbstractConnectionListener connectionListener) {
 
         sessionManager = new SessionManager(context);
         //connecting Xmpp Server
@@ -63,8 +62,77 @@ public class MknXmppHelper {
 
     }
 
+    //Join Chat Room
+    public static void joinChatRoom(XMPPConnection xmppConnection, String chatId, String nickName,
+                                    MessageListener messageListener) {
+
+        try {
+
+            MultiUserChatManager manager = MultiUserChatManager.getInstanceFor(xmppConnection);
+
+            //Create MultiUserChat for xmppConnection for a room
+            MultiUserChat multiUserChat = manager.getMultiUserChat("chat" + chatId + "@conference.localhost.localdomain");
+
+            //User2 joins the new room
+            //the room service will decide the amount of history to send
+            multiUserChat.join(nickName);
+
+            multiUserChat.addMessageListener(messageListener);
+            multiUserChat.addParticipantListener(new PresenceListener() {
+                @Override
+                public void processPresence(Presence presence) {
+
+                    Log.d(TAG, "AddParticipantListener : " + presence.getStatus());
+
+                }
+            });
+
+            ChatManager chatManager = ChatManager.getInstanceFor(xmppConnection);
+
+            chatManager.addChatListener(new ChatManagerListener() {
+                @Override
+                public void chatCreated(Chat chat, boolean createdLocally) {
+
+                    chat.addMessageListener(new ChatMessageListener() {
+                        @Override
+                        public void processMessage(Chat chat, Message message) {
+
+                            Log.d("Type Stat", " is typing......");
+                        }
+                    });
+
+                }
+            });
+
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        }
+    }
+
+    //Send Message to Chat Room
+    public static void sendGroupMessage(XMPPConnection xmppConnection, String chatId, String message) {
+
+        try {
+
+            Message msg = new Message("chat" + chatId + "@conference.localhost.localdomain", Message.Type.groupchat);
+            msg.setBody(message);
+            xmppConnection.sendPacket(msg);
+
+        } catch (SmackException.NotConnectedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void sendMessageToRoomOccupants(XMPPTCPConnection connection) throws SmackException.NotConnectedException {
+        //Message msg = new Message("room789@conference.dishaserver", Message.Type.groupchat);
+        //msg.setBody("This is nagarjuna friednds. Please join this room and let us have fun."); connection.sendPacket(msg);
+    }
+
     //Xmpp Configuration
-    private AbstractXMPPConnection getXmppConnection(AbstractConnectionListener connectionListener){
+    private AbstractXMPPConnection getXmppConnection(AbstractConnectionListener connectionListener) {
 
         //Build configuration
         XMPPTCPConnectionConfiguration xmppConfiguration = XMPPTCPConnectionConfiguration.builder()
@@ -74,7 +142,7 @@ public class MknXmppHelper {
                 .setHostnameVerifier(new HostnameVerifier() {
                     @Override
                     public boolean verify(String hostname, SSLSession session) {
-                        Log.d(TAG, "verify: hostname "+hostname);
+                        Log.d(TAG, "verify: hostname " + hostname);
                         return false;
                     }
                 })
@@ -95,26 +163,26 @@ public class MknXmppHelper {
     }
 
     //Connect to server and login
-    private void connectXmppServer(final AbstractXMPPConnection connection){
+    private void connectXmppServer(final AbstractXMPPConnection connection) {
 
         new Thread(new Runnable() {
             @Override
             public void run() {
 
-                try{
+                try {
 
                     //connect now
                     connection.connect();
 
-                    if(connection.isConnected())
+                    if (connection.isConnected())
                         Log.d(TAG, "run: isConnected OK");
 
                     connection.login();
 
-                    if(connection.isAuthenticated())
+                    if (connection.isAuthenticated())
                         Log.d(TAG, "run: isAuthenticated OK");
 
-                }catch(Exception e){
+                } catch (Exception e) {
 
                     e.printStackTrace();
 
@@ -126,94 +194,22 @@ public class MknXmppHelper {
     }
 
     //Get Chat room info
-    public void getChatRoomInfo(XMPPConnection xmppConnection){
+    public void getChatRoomInfo(XMPPConnection xmppConnection) {
 
-        try{
+        try {
 
             // Get the MultiUserChatManager
             MultiUserChatManager manager = MultiUserChatManager.getInstanceFor(xmppConnection);
             RoomInfo roomInfo = manager.getRoomInfo("chat21@conference.localhost.localdomain");
-            Log.d(TAG, "getChatRoomInfo: "+roomInfo.getDescription());
+            Log.d(TAG, "getChatRoomInfo: " + roomInfo.getDescription());
 
-        }catch (Exception e){
+        } catch (Exception e) {
 
             e.printStackTrace();
         }
     }
 
-    //Join Chat Room
-    public void joinChatRoom(XMPPConnection xmppConnection, MessageListener messageListener){
-
-        try{
-
-            /*
-            MultiUserChatManager manager = MultiUserChatManager.getInstanceFor(xmppConnection);
-
-            //Create MultiUserChat for xmppConnection for a room
-            MultiUserChat multiUserChat = manager.getMultiUserChat("chat21@conference.localhost.localdomain");
-
-            //User2 joins the new room
-            //the room service will decide the amount of history to send
-            multiUserChat.join("Venom");
-
-            multiUserChat.addMessageListener(messageListener);
-            multiUserChat.addParticipantListener(new PresenceListener() {
-                @Override
-                public void processPresence(Presence presence) {
-
-                }
-            });
-
-            ChatManager chatManager = ChatManager.getInstanceFor(xmppConnection);
-
-            chatManager.addChatListener(new ChatManagerListener() {
-                @Override
-                public void chatCreated(Chat chat, boolean createdLocally) {
-
-                    chat.addMessageListener(new ChatMessageListener() {
-                        @Override
-                        public void processMessage(Chat chat, Message message) {
-
-                            Log.d("TYpe Stat",  " is typing......");
-                        }
-                    });
-
-                }
-            });
-
-            */
-
-
-        }catch(Exception e){
-
-            e.printStackTrace();
-
-        }
-    }
-
-    //Send Message to Chat Room
-    public static void sendGroupMessage( XMPPConnection xmppConnection, String chatId , String message ){
-
-        try {
-
-//            Message msg = new Message(chatId+"chat21@conference.localhost.localdomain",Message.Type.groupchat);
-            Message msg = new Message(chatId+"@conference.localhost.localdomain",Message.Type.groupchat);
-//            msg.setBody("This is nagarjuna friednds. Please join this room and let us have fun.");
-            msg.setBody(message);
-            xmppConnection.sendPacket(msg);
-
-        } catch (SmackException.NotConnectedException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private static void sendMessageToRoomOccupants(XMPPTCPConnection connection) throws SmackException.NotConnectedException {
-        //Message msg = new Message("room789@conference.dishaserver", Message.Type.groupchat);
-        //msg.setBody("This is nagarjuna friednds. Please join this room and let us have fun."); connection.sendPacket(msg);
-    }
-
-
-    public List<HostedRoom> getHostRooms(XMPPConnection xmppConnection){
+    public List<HostedRoom> getHostRooms(XMPPConnection xmppConnection) {
         List<HostedRoom> roominfos = new ArrayList<HostedRoom>();
         try {
             // Get the MultiUserChatManager
@@ -226,7 +222,7 @@ public class MknXmppHelper {
             }
             Log.i("room", "Number of service meetings:" + roominfos.size());
         } catch (XMPPException e) {
-            Log.e("getHostRooms",e.getMessage());
+            Log.e("getHostRooms", e.getMessage());
             e.printStackTrace();
         } catch (SmackException.NotConnectedException e) {
             e.printStackTrace();
