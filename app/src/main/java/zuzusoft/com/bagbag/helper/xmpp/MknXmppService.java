@@ -80,24 +80,6 @@ public class MknXmppService extends JobService {
         public void authenticated(XMPPConnection connection, boolean resumed) {
             super.authenticated(connection, resumed);
             Log.d(TAG, "authenticated: Ok");
-
-
-            //set message listener
-            ChatManager chatManager = ChatManager.getInstanceFor(connection);
-            chatManager.addChatListener(new ChatManagerListener() {
-                @Override
-                public void chatCreated(Chat chat, boolean createdLocally) {
-
-                    chat.addMessageListener(new ChatMessageListener() {
-                        @Override
-                        public void processMessage(Chat chat, Message message) {
-
-                            Log.d(TAG, "processMessage: "+message.getFrom()+" : "+message.getBody());
-                            message.getBody();
-                        }
-                    });
-                }
-            });
         }
 
         @Override

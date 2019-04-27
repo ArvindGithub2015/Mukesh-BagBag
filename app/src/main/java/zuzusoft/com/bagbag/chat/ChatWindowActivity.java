@@ -12,11 +12,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-
-import org.jivesoftware.smack.MessageListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -83,7 +80,7 @@ public class ChatWindowActivity extends BaseActivity implements BagExchangeDialo
 
     private void initViews() {
 
-        //spread butter
+        //spread butterbtnSend
         ButterKnife.bind(this);
 
         dialogHelper = new DialogHelper(context);
@@ -109,23 +106,8 @@ public class ChatWindowActivity extends BaseActivity implements BagExchangeDialo
 
         if (MknXmppService.xmppConnection != null) {
             MknXmppHelper.joinChatRoom(MknXmppService.xmppConnection, chatData.getChatId(),
-                    chatData.getRosterBag().getUserName(),
-                    new MessageListener() {
-                        @Override
-                        public void processMessage(final org.jivesoftware.smack.packet.Message message) {
-
-                            Log.d(TAG, "Received Message : " + message);
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    Toast.makeText(context, message.getBody(), Toast.LENGTH_SHORT).show();
-                                }
-                            });
-
-                        }
-                    });
+                    chatData.getRosterBag().getUserName());
         }
-
 
     }
 

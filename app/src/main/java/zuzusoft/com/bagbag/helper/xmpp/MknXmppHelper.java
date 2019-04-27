@@ -1,43 +1,28 @@
 package zuzusoft.com.bagbag.helper.xmpp;
 
 import android.content.Context;
-import android.os.AsyncTask;
 import android.util.Log;
 
 import org.jivesoftware.smack.AbstractConnectionListener;
 import org.jivesoftware.smack.AbstractXMPPConnection;
 import org.jivesoftware.smack.ConnectionConfiguration;
 import org.jivesoftware.smack.MessageListener;
-import org.jivesoftware.smack.PacketListener;
 import org.jivesoftware.smack.PresenceListener;
 import org.jivesoftware.smack.SmackException;
 import org.jivesoftware.smack.XMPPConnection;
 import org.jivesoftware.smack.XMPPException;
-import org.jivesoftware.smack.chat.Chat;
-import org.jivesoftware.smack.chat.ChatManager;
-import org.jivesoftware.smack.chat.ChatManagerListener;
-import org.jivesoftware.smack.chat.ChatMessageListener;
-import org.jivesoftware.smack.filter.MessageTypeFilter;
-import org.jivesoftware.smack.filter.PacketFilter;
 import org.jivesoftware.smack.packet.Message;
-import org.jivesoftware.smack.packet.Packet;
 import org.jivesoftware.smack.packet.Presence;
-import org.jivesoftware.smack.packet.id.StanzaIdUtil;
 import org.jivesoftware.smack.tcp.XMPPTCPConnection;
 import org.jivesoftware.smack.tcp.XMPPTCPConnectionConfiguration;
-import org.jivesoftware.smackx.disco.ServiceDiscoveryManager;
 import org.jivesoftware.smackx.muc.HostedRoom;
 import org.jivesoftware.smackx.muc.MultiUserChat;
 import org.jivesoftware.smackx.muc.MultiUserChatManager;
 import org.jivesoftware.smackx.muc.RoomInfo;
-import org.jxmpp.jid.Jid;
-import org.jxmpp.jid.util.JidUtil;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Random;
-import java.util.Set;
 
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLSession;
@@ -63,8 +48,7 @@ public class MknXmppHelper {
     }
 
     //Join Chat Room
-    public static void joinChatRoom(XMPPConnection xmppConnection, String chatId, String nickName,
-                                    MessageListener messageListener) {
+    public static void joinChatRoom(XMPPConnection xmppConnection, String chatId, String nickName) {
 
         try {
 
@@ -77,7 +61,6 @@ public class MknXmppHelper {
             //the room service will decide the amount of history to send
             multiUserChat.join(nickName);
 
-            multiUserChat.addMessageListener(messageListener);
             multiUserChat.addParticipantListener(new PresenceListener() {
                 @Override
                 public void processPresence(Presence presence) {
@@ -87,39 +70,32 @@ public class MknXmppHelper {
                 }
             });
 
-            ChatManager chatManager = ChatManager.getInstanceFor(xmppConnection);
-
-            chatManager.addChatListener(new ChatManagerListener() {
+            multiUserChat.addMessageListener(new MessageListener() {
                 @Override
-                public void chatCreated(Chat chat, boolean createdLocally) {
-
-                    chat.addMessageListener(new ChatMessageListener() {
-                        @Override
-                        public void processMessage(Chat chat, Message message) {
-
-                            Log.d("Type Stat", " is typing......");
-                        }
-                    });
-
+                public void processMessage(Message message) {
+                    System.out.println(" Received group cht messages... ");
+                    System.out.println("from : " + message.getFrom());
+                    System.out.println("to : " + message.getTo());
+                    System.out.println(message.toString());
                 }
             });
 
-
         } catch (Exception e) {
-
             e.printStackTrace();
-
         }
     }
+
 
     //Send Message to Chat Room
     public static void sendGroupMessage(XMPPConnection xmppConnection, String chatId, String message) {
 
         try {
 
+//            Message msg = new Message("chat" + chatId + "@conference.localhost.localdomain", Message.Type.groupchat);
             Message msg = new Message("chat" + chatId + "@conference.localhost.localdomain", Message.Type.groupchat);
             msg.setBody(message);
-            xmppConnection.sendPacket(msg);
+//            xmppConnection.sendPacket(msg);
+            xmppConnection.sendStanza(msg);
 
         } catch (SmackException.NotConnectedException e) {
             e.printStackTrace();
@@ -170,7 +146,6 @@ public class MknXmppHelper {
             public void run() {
 
                 try {
-
                     //connect now
                     connection.connect();
 
@@ -197,7 +172,6 @@ public class MknXmppHelper {
     public void getChatRoomInfo(XMPPConnection xmppConnection) {
 
         try {
-
             // Get the MultiUserChatManager
             MultiUserChatManager manager = MultiUserChatManager.getInstanceFor(xmppConnection);
             RoomInfo roomInfo = manager.getRoomInfo("chat21@conference.localhost.localdomain");
