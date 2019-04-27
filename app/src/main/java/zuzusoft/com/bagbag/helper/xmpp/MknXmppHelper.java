@@ -48,7 +48,8 @@ public class MknXmppHelper {
     }
 
     //Join Chat Room
-    public static void joinChatRoom(XMPPConnection xmppConnection, String chatId, String nickName) {
+    public static void joinChatRoom(XMPPConnection xmppConnection, String chatId, String nickName,
+                                    MessageListener messageListener) {
 
         try {
 
@@ -70,15 +71,7 @@ public class MknXmppHelper {
                 }
             });
 
-            multiUserChat.addMessageListener(new MessageListener() {
-                @Override
-                public void processMessage(Message message) {
-                    System.out.println(" Received group cht messages... ");
-                    System.out.println("from : " + message.getFrom());
-                    System.out.println("to : " + message.getTo());
-                    System.out.println(message.toString());
-                }
-            });
+            multiUserChat.addMessageListener(messageListener);
 
         } catch (Exception e) {
             e.printStackTrace();

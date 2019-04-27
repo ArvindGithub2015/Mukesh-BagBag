@@ -3,6 +3,8 @@ package zuzusoft.com.bagbag.chat;
 import android.app.job.JobInfo;
 import android.app.job.JobScheduler;
 import android.content.ComponentName;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -12,8 +14,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+
+import org.jivesoftware.smack.MessageListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +30,7 @@ import zuzusoft.com.bagbag.R;
 import zuzusoft.com.bagbag.chat.model.Message;
 import zuzusoft.com.bagbag.helper.BaseActivity;
 import zuzusoft.com.bagbag.helper.DialogHelper;
+import zuzusoft.com.bagbag.helper.SessionManager;
 import zuzusoft.com.bagbag.helper.xmpp.MknXmppConstants;
 import zuzusoft.com.bagbag.helper.xmpp.MknXmppHelper;
 import zuzusoft.com.bagbag.helper.xmpp.MknXmppService;
@@ -105,8 +111,46 @@ public class ChatWindowActivity extends BaseActivity implements BagExchangeDialo
 
 
         if (MknXmppService.xmppConnection != null) {
+//            MknXmppHelper.joinChatRoom(MknXmppService.xmppConnection, chatData.getChatId(),
+//                    chatData.getRosterBag().getUserName());
+
             MknXmppHelper.joinChatRoom(MknXmppService.xmppConnection, chatData.getChatId(),
-                    chatData.getRosterBag().getUserName());
+                    sessionManager.getUserDetails().get(SessionManager.KEY_SOCIAL_ID) /*"c9vf46siqdupvvwzw6qlufns6bg3" chatData.getRosterBag().getUserId()*/, new MessageListener() {
+                        @Override
+                        public void processMessage(final org.jivesoftware.smack.packet.Message message) {
+                            System.out.println(" Received group cht messages...Received group cht messages... ");
+
+                            String otherOccupentId = message.getFrom().split("/")[1];
+
+                            if(!otherOccupentId.equals(sessionManager.getUserDetails().get(SessionManager.KEY_SOCIAL_ID))){
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        /*Toast.makeText(context, message.getBody(),
+                                                Toast.LENGTH_SHORT).show();*/
+                                        Toast toast = Toast.makeText(context, message.getBody(), Toast.LENGTH_SHORT);
+                                        View view = toast.getView();
+
+                                        view.getBackground().setColorFilter(Color.parseColor("#46B0D5"), PorterDuff.Mode.SRC_IN);
+
+                                        TextView text = view.findViewById(android.R.id.message);
+                                        text.setTextColor(Color.parseColor("#FFFFFF"));
+
+                                        toast.show();
+
+
+
+                                    }
+                                });
+                            }
+
+
+                        }
+                    });
+
+        } else {
+            Toast.makeText(context, "Xmpp connection null : Unable to join room = chat" + chatData.getChatId(),
+                    Toast.LENGTH_SHORT).show();
         }
 
     }
