@@ -3,8 +3,6 @@ package zuzusoft.com.bagbag.chat;
 import android.app.job.JobInfo;
 import android.app.job.JobScheduler;
 import android.content.ComponentName;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -122,13 +120,12 @@ public class ChatWindowActivity extends BaseActivity implements BagExchangeDialo
 
                             String otherOccupentId = message.getFrom().split("/")[1];
 
-                            if(!otherOccupentId.equals(sessionManager.getUserDetails().get(SessionManager.KEY_SOCIAL_ID))){
+                            if (!otherOccupentId.equals(sessionManager.getUserDetails().get(SessionManager.KEY_SOCIAL_ID))) {
                                 runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
-                                        /*Toast.makeText(context, message.getBody(),
-                                                Toast.LENGTH_SHORT).show();*/
-                                        Toast toast = Toast.makeText(context, message.getBody(), Toast.LENGTH_SHORT);
+
+                                        /*Toast toast = Toast.makeText(context, message.getBody(), Toast.LENGTH_SHORT);
                                         View view = toast.getView();
 
                                         view.getBackground().setColorFilter(Color.parseColor("#46B0D5"), PorterDuff.Mode.SRC_IN);
@@ -136,12 +133,13 @@ public class ChatWindowActivity extends BaseActivity implements BagExchangeDialo
                                         TextView text = view.findViewById(android.R.id.message);
                                         text.setTextColor(Color.parseColor("#FFFFFF"));
 
-                                        toast.show();
-
-
-
+                                        toast.show();*/
                                     }
                                 });
+
+                                setMessage(message.getBody() , false);
+                            } else {
+                                setMessage(message.getBody(), true);
                             }
 
 
@@ -153,6 +151,21 @@ public class ChatWindowActivity extends BaseActivity implements BagExchangeDialo
                     Toast.LENGTH_SHORT).show();
         }
 
+    }
+
+    /*
+    * By Arvind
+    * as of now we are binding message but it is not correct way to deo this
+    * */
+    private void setMessage(String message, boolean isSelf) {
+        Message m = new Message();
+        m.setSelf(isSelf);
+        m.setMessage(message+ "\n");
+        dataSet.add(m);
+        checkViewEmpty(3);
+        ((ChatMessageAdapter) chat.getAdapter()).notifyDataSetChanged();
+
+        scrollMyListViewToBottom();
     }
 
     private void updateViews() {
