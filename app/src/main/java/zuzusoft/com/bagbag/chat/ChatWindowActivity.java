@@ -3,6 +3,8 @@ package zuzusoft.com.bagbag.chat;
 import android.app.job.JobInfo;
 import android.app.job.JobScheduler;
 import android.content.ComponentName;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -120,6 +122,14 @@ public class ChatWindowActivity extends BaseActivity implements BagExchangeDialo
 
                             String otherOccupentId = message.getFrom().split("/")[1];
 
+
+                            /*runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    setMessage(message.getBody(), false);
+                                }
+                            });*/
+
                             if (!otherOccupentId.equals(sessionManager.getUserDetails().get(SessionManager.KEY_SOCIAL_ID))) {
                                 runOnUiThread(new Runnable() {
                                     @Override
@@ -127,19 +137,24 @@ public class ChatWindowActivity extends BaseActivity implements BagExchangeDialo
 
                                         /*Toast toast = Toast.makeText(context, message.getBody(), Toast.LENGTH_SHORT);
                                         View view = toast.getView();
-
                                         view.getBackground().setColorFilter(Color.parseColor("#46B0D5"), PorterDuff.Mode.SRC_IN);
-
                                         TextView text = view.findViewById(android.R.id.message);
                                         text.setTextColor(Color.parseColor("#FFFFFF"));
-
                                         toast.show();*/
+
+                                        setMessage(message.getBody() , false);
                                     }
                                 });
 
-                                setMessage(message.getBody() , false);
                             } else {
-                                setMessage(message.getBody(), true);
+
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        setMessage(message.getBody() , true);
+                                    }
+                                });
+
                             }
 
 
@@ -153,14 +168,15 @@ public class ChatWindowActivity extends BaseActivity implements BagExchangeDialo
 
     }
 
+
     /*
-    * By Arvind
-    * as of now we are binding message but it is not correct way to deo this
-    * */
+     * By Arvind
+     * as of now we are binding message but it is not correct way to deo this
+     * */
     private void setMessage(String message, boolean isSelf) {
         Message m = new Message();
         m.setSelf(isSelf);
-        m.setMessage(message+ "\n");
+        m.setMessage(message + "\n");
         dataSet.add(m);
         checkViewEmpty(3);
         ((ChatMessageAdapter) chat.getAdapter()).notifyDataSetChanged();
@@ -262,14 +278,14 @@ public class ChatWindowActivity extends BaseActivity implements BagExchangeDialo
 
                 if (!inputMessage.getText().toString().isEmpty()) {
 
-                    Message m = new Message();
+                    /*Message m = new Message();
                     m.setSelf(true);
                     m.setMessage(inputMessage.getText().toString() + "\n");
                     dataSet.add(m);
                     checkViewEmpty(3);
                     ((ChatMessageAdapter) chat.getAdapter()).notifyDataSetChanged();
 
-                    scrollMyListViewToBottom();
+                    scrollMyListViewToBottom();*/
 
                     if (MknXmppService.xmppConnection != null) {
                         MknXmppHelper.sendGroupMessage(MknXmppService.xmppConnection,
