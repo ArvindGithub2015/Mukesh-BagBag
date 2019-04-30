@@ -2,11 +2,15 @@ package zuzusoft.com.bagbag.chat;
 
 import android.app.job.JobInfo;
 import android.app.job.JobScheduler;
+import android.arch.lifecycle.MutableLiveData;
 import android.content.ComponentName;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.annotation.Nullable;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -19,6 +23,14 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 
 import org.jivesoftware.smack.MessageListener;
+import org.jivesoftware.smackx.chatstates.ChatState;
+import org.jivesoftware.smackx.chatstates.packet.ChatStateExtension;
+import org.jivesoftware.smackx.muc.MultiUserChat;
+import org.jxmpp.jid.DomainBareJid;
+import org.jxmpp.jid.impl.JidCreate;
+import org.jxmpp.jid.parts.Domainpart;
+import org.jxmpp.jid.parts.Localpart;
+import org.jxmpp.stringprep.XmppStringprepException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +38,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
+import io.reactivex.disposables.CompositeDisposable;
 import zuzusoft.com.bagbag.R;
 import zuzusoft.com.bagbag.chat.model.Message;
 import zuzusoft.com.bagbag.helper.BaseActivity;
@@ -75,6 +88,9 @@ public class ChatWindowActivity extends BaseActivity implements BagExchangeDialo
     private DialogHelper dialogHelper;
     private DataChatWindow chatData;
 
+    public ChatWindowActivity() throws XmppStringprepException {
+    }
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,6 +99,108 @@ public class ChatWindowActivity extends BaseActivity implements BagExchangeDialo
         initViews();
 
     }
+
+    //   Typing start
+    private void addInputMessageChatListener() {
+
+        inputMessage.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                checkTextLength(charSequence);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+    }
+
+    private void checkTextLength(CharSequence charSequence) {
+
+        if (!TextUtils.isDigitsOnly(charSequence)){
+            try {
+                sendChatState(ChatState.composing);
+            } catch (XmppStringprepException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+    private MultiUserChat multiUserChat = null;
+    private  MutableLiveData liveChatState = new MutableLiveData<String>();
+    private Handler chatStateHandler = new Handler(Looper.getMainLooper());
+    private String NAMESPACE = "http://jabber.org/protocol/chatstates";
+    private Boolean isComposingChatStateSent = false;
+    private  Boolean isPausedChatStateSent = false;
+    private String username;
+    private CompositeDisposable disposable  = new CompositeDisposable();
+    private DomainBareJid xmppServiceGroupDomain = JidCreate.domainBareFrom("domain_name_for_group_chat");
+
+
+    private void sendChatState(ChatState chatState) throws XmppStringprepException {
+        if (MknXmppService.xmppConnection != null && MknXmppService.xmppConnection.isConnected()) {
+            if (!isComposingChatStateSent || ! isPausedChatStateSent) {
+                org.jivesoftware.smack.packet.Message chatStateMessage = new org.jivesoftware.smack.packet.Message();
+
+                //create empty body message
+                chatStateMessage.setBody(null);
+                chatStateMessage.setType( org.jivesoftware.smack.packet.Message.Type.groupchat);
+                chatStateMessage.setSubject(null);
+                chatStateMessage.setTo("chat"+chatData.getChatId());
+
+                //the user who is typing i.e. logged in user
+                chatStateMessage.setFrom(JidCreate.bareFrom(Localpart.from(
+                        sessionManager.getUserDetails().get(SessionManager.KEY_SOCIAL_ID)))+"@conference.localhost.localdomain");
+
+
+                //create extension using ChatStateExtension
+                //this extension will be fetched in incoming message listener and is explained below
+                ChatStateExtension extension = new ChatStateExtension(chatState);
+                chatStateMessage.addExtension(extension);
+                /*if (!isComposingChatStateSent && chatState == ChatState.composing) {
+                    //message sent with composing(typing) event
+                    multiUserChat = new MultiUserChat();
+                    multiUserChat?.sendMessage(chatStateMessage)
+                    isComposingChatStateSent = true
+                    //message sent with pause event  after 3 seconds
+                    //code is written below in chatStaePauseRunnable
+                    chatStateHandler.postDelayed(chatStatePausedRunnable, 3000)
+                } else {
+                    if (!isPausedChatStateSent && chatState == ChatState.paused) {
+                        multiUserChat?.sendMessage(chatStateMessage)
+                        isPausedChatStateSent = true
+
+                        disposable.add(Observable.interval(6000L, TimeUnit.MILLISECONDS)
+                                .observeOn(AndroidSchedulers.mainThread())
+                                .subscribeOn(Schedulers.io())
+                                .subscribe(
+                                        { t ->
+                        if (isComposingChatStateSent && isPausedChatStateSent) {
+                            isComposingChatStateSent = false
+                            isPausedChatStateSent = false
+                        }
+                                    },
+                        {},
+                        {}
+                   ))
+                    }
+                }*/
+
+            }
+        }
+
+    }
+
+    //   Typing end
+
 
     private void initViews() {
 
@@ -142,7 +260,7 @@ public class ChatWindowActivity extends BaseActivity implements BagExchangeDialo
                                         text.setTextColor(Color.parseColor("#FFFFFF"));
                                         toast.show();*/
 
-                                        setMessage(message.getBody() , false);
+                                        setMessage(message.getBody(), false);
                                     }
                                 });
 
@@ -151,7 +269,7 @@ public class ChatWindowActivity extends BaseActivity implements BagExchangeDialo
                                 runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
-                                        setMessage(message.getBody() , true);
+                                        setMessage(message.getBody(), true);
                                     }
                                 });
 
