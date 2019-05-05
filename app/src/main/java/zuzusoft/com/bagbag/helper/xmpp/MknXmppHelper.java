@@ -199,4 +199,7 @@ public class MknXmppHelper {
         return roominfos;
     }
 
+
+    //mkn comment
+
 }
